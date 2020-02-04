@@ -102,12 +102,12 @@ static int reftable_init_db(struct ref_store *ref_store, struct strbuf *err)
 {
 	struct reftable_ref_store *refs =
 		(struct reftable_ref_store *)ref_store;
+	FILE *f;
 
 	safe_create_dir(refs->reftable_dir, 1);
-	FILE *f = fopen(refs->table_list_file, "a");
-	if (f == NULL) {
+	f = fopen(refs->table_list_file, "a");
+	if (!f)
 		return -1;
-	}
 	fclose(f);
 	return 0;
 }
