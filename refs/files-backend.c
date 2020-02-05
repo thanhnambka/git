@@ -3166,6 +3166,7 @@ static int files_init_db(struct ref_store *ref_store, struct strbuf *err)
 	/*
 	 * Create .git/refs/{heads,tags}
 	 */
+	strbuf_reset(&sb);
 	files_ref_path(refs, &sb, "refs/heads");
 	safe_create_dir(sb.buf, 1);
 
